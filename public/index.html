@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tank Battle Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="menu-screen" class="screen">
+      <h1>Tank Battle Online</h1>
+      <div class="menu-options">
+        <button id="create-game">Create Game</button>
+        <div class="join-game-container">
+          <input type="text" id="game-code" placeholder="Enter game code">
+          <button id="join-game">Join Game</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="waiting-screen" class="screen hidden">
+      <h2>Waiting for opponent...</h2>
+      <div class="game-code-display">
+        <p>Share this code with your friend:</p>
+        <div id="room-code" class="code-box"></div>
+      </div>
+      <button id="cancel-game">Cancel</button>
+    </div>
+    
+    <div id="game-screen" class="screen hidden">
+      <canvas id="game-canvas" width="800" height="600"></canvas>
+      
+      <div id="game-ui">
+        <div class="player-info">
+          <div id="player1-info" class="player-card">
+            <div class="health-bar">
+              <div class="health-fill" id="player1-health"></div>
+            </div>
+            <div class="player-name">Player 1</div>
+          </div>
+          <div id="player2-info" class="player-card">
+            <div class="health-bar">
+              <div class="health-fill" id="player2-health"></div>
+            </div>
+            <div class="player-name">Player 2</div>
+          </div>
+        </div>
+        
+        <div class="controls-panel hidden" id="controls">
+          <div class="control-section">
+            <div class="control-label">Wind</div>
+            <div id="wind-indicator">
+              <div id="wind-arrow"></div>
+              <div id="wind-value">0%</div>
+            </div>
+          </div>
+          
+          <div class="control-section">
+            <div class="control-label">Angle</div>
+            <div class="control-value">
+              <span id="angle-value">45°</span>
+              <div class="control-buttons">
+                <button id="angle-down">-</button>
+                <button id="angle-up">+</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="control-section">
+            <div class="control-label">Power</div>
+            <div class="control-value">
+              <span id="power-value">50</span>
+              <div class="control-buttons">
+                <button id="power-down">-</button>
+                <button id="power-up">+</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="control-section">
+            <div class="control-label">Weapon</div>
+            <div class="weapon-selection">
+              <button class="weapon-btn selected" data-weapon="0">Standard</button>
+              <button class="weapon-btn" data-weapon="1">Explosive</button>
+              <button class="weapon-btn" data-weapon="2">Pierce</button>
+            </div>
+          </div>
+          
+          <div class="control-section actions">
+            <button id="move-left">← Move Left</button>
+            <button id="fire">FIRE!</button>
+            <button id="move-right">Move Right →</button>
+          </div>
+        </div>
+        
+        <div id="turn-indicator">
+          <div id="current-turn">Your Turn</div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="game-over-screen" class="screen hidden">
+      <h2 id="winner-text">Player X Wins!</h2>
+      <button id="play-again">Play Again</button>
+      <button id="main-menu">Main Menu</button>
+    </div>
+  </div>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html> 
