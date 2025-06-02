@@ -1,7 +1,7 @@
 {
-  "name": "tank-battle-online",
+  "name": "tank-duel",
   "version": "1.0.0",
-  "description": "Online multiplayer tank battle game",
+  "description": "Online multiplayer tank duel game",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
